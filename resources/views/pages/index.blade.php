@@ -7,7 +7,7 @@
             <h1 class="text 2xl:text-5xl text-4xl  font-bold">Ejemplos de currículos profesionales (+guías de redacción)</h1>
             <span class="inline-flex 2xl:text-2xl text-xl mt-5">Echa un vistazo a nuestros ejemplos gratuitos de currículos para inspirarte. Utiliza las guías de expertos y nuestro generador de currículos para crear un bonito currículo en cuestión de minutos. También ofrecemos una biblioteca de plantillas de currículum.</span>
             <div class="content-d__btn m-5">
-                <a class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="{{ route('curriculum') }}">Crear mi currículum</a>
+                <a class=" bg-naranja hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="{{ route('curriculum') }}">Crear mi currículum</a>
             </div>
         </div>
         <div class="content-d">
