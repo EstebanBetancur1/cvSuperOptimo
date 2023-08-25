@@ -1,8 +1,8 @@
 
-<div x-data="{ mobileMenuOpen: false }" class="relative bg-white">
+<div x-data="{ mobileMenuOpen: false }" class="relative bg-white z-10">
   <div class="flex justify-between items-center px-4 py-6 sm:px-6 md:justify-start md:space-x-10">
     <div class="lg:w-0 lg:flex-1">
-      <img class="h-8 w-auto sm:h-10" src="{{ asset('storage/imagenes/logo_ico.svg') }}" alt="Super Optimo Logo" />
+      <a href="/"><img class="h-8 w-auto sm:h-10" src="{{ asset('storage/imagenes/logo_ico.svg') }}" alt="Super Optimo Logo" /> </a>
     </div>
     <div class="-mr-2 -my-2 md:hidden">
       <button @click="mobileMenuOpen = true" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">

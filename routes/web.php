@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\TemplatesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,3 +19,5 @@ Route::get('/', function () {
     return view('pages.index', ['PageName' => 'Inicio']);
 });
 
+
+Route::get('/curriculum', [TemplatesController::class, 'curriculum'])->name('curriculum');

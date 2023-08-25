@@ -6,9 +6,11 @@
     <title>{{ $PageName }} - {{ config('app.name', 'Laravel') }}</title>
     <script src="{{ asset('js/home.js') }}"></script>
     <script src="{{ asset('js/alpine.js') }}"></script>
+    <script src="{{ asset('js/swiper.js') }}"></script>
     <link rel="shortcut icon" href="{{ asset('storage/imagenes/logo_ico.svg') }}" type="image/x-icon" />
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/swiper.css') }}">
   
 </head>
     <body>

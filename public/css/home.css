@@ -13,3 +13,21 @@
 .text-naranja_claro{
     color: rgb(255,202,85);
 }
+
+.swiper-slide {
+  width: 200px !important;
+  height: 200px !important;
+  text-align: center;
+  font-size: 33px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0 50px;
+}
+
+.swiper-wrapper{
+  -webkit-transition-timing-function:linear!important;
+  transition-timing-function:linear!important; 
+}
