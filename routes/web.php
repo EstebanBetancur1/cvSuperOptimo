@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\TemplatesController;
+use App\Http\Controllers\auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,5 @@ Route::get('/', function () {
 
 
 Route::get('/curriculum', [TemplatesController::class, 'curriculum'])->name('curriculum');
+
+Route::get('/register', [auth::class, 'index'])->name('register');

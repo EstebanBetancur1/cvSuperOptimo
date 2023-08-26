@@ -139,11 +139,11 @@
       </div>
     </nav>
     <div class="hidden md:flex items-center justify-end space-x-8 md:flex-1 lg:w-0">
-      <a href="#" class="whitespace-no-wrap text-base leading-6 font-medium text-gray-500 hover:text-gray-900">
+      <a href="{{ route('register') }}" class="whitespace-no-wrap text-base leading-6 font-medium text-gray-500 hover:text-gray-900">
         Registrate
       </a>
       <span class="inline-flex rounded-md shadow-sm">
-        <a href="#" class="whitespace-no-wrap inline-flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-naranja hover:bg-naranja focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-naranja_claro transition ease-in-out duration-150">
+        <a href="{{ route('curriculum') }}" class="whitespace-no-wrap inline-flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-naranja hover:bg-naranja focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-naranja_claro transition ease-in-out duration-150">
           Comenzar
         </a>
       </span>
@@ -260,7 +260,7 @@
           </div> --}}
           <div class="space-y-6">
             <span class="w-full flex rounded-md shadow-sm">
-              <a href="#" class="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-naranja hover:bg-naranja focus:outline-none focus:bg-red-300 focus:shadow-outline-indigo active:bg-red-500 transition ease-in-out duration-150">
+              <a href="{{ route('curriculum') }}" class="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-naranja hover:bg-naranja focus:outline-none focus:bg-red-300 focus:shadow-outline-indigo active:bg-red-500 transition ease-in-out duration-150">
                 Comenzar
               </a>
             </span>
