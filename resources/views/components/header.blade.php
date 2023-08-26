@@ -21,7 +21,7 @@
         </button>
         <div style="display: none;" x-show="flyoutMenuOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-1" class="absolute -ml-4 mt-3 w-max-content max-w-md transform lg:ml-0 lg:left-1/2 lg:-translate-x-1/2 xl:max-w-3xl">
           <div class="rounded-lg shadow-lg">
-            <div class="rounded-lg shadow-xs overflow-hidden">
+            <div class="rounded-lg shadow-xs overflow-hidden w-[600px]">
               <div class="z-20 relative grid gap-8 bg-white p-8 xl:grid-cols-2">
                 <a href="#" class="flex items-start space-x-4">
                   <div class="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-md bg-naranja text-white">
@@ -90,7 +90,7 @@
         </button>
         <div style="display: none;" x-show="flyoutMenuOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-1" class="absolute -ml-6 mt-3 w-max-content max-w-xs transform lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
           <div class="rounded-lg shadow-lg">
-            <div class="rounded-lg shadow-xs overflow-hidden">
+            <div class="rounded-lg shadow-xs overflow-hidden w-[300px]">
               <div class="z-20 relative space-y-8 bg-white p-8">
                 <a href="#" class="block space-y-1">
                   <p class="text-base leading-6 font-medium text-gray-900">
