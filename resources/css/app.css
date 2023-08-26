@@ -1,0 +1,76 @@
+.bg-naranja{
+    background-color: rgb(255, 60, 0) !important;
+}
+
+.text-naranja{
+    color: rgb(255, 60, 0);
+}
+
+.bg-naranja_claro{
+    background-color: rgb(255,202,85);
+}
+
+.text-naranja_claro{
+    color: rgb(255,202,85);
+}
+
+.sample-slider{
+    width:90%;
+}
+.sample-slider img{
+    widows: 340px !important;
+    height: 500px;
+    object-fit: cover;
+    overflow: hidden;
+}
+.swiper-slide{
+    width: 340px !important;
+    overflow: hidden;
+    position: relative;
+}
+.boton_use{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.btn_dentro{
+    padding: 10px;
+    border-radius: 4px;
+}
+.tile_plantill{
+background: rgb(0,0,0);
+background: linear-gradient(90deg, rgba(202, 101, 5, 0.404) 0%, rgba(212, 152, 21, 0.421) 100%);
+z-index: 1;
+position: absolute;
+margin-top: -25px;
+width: 100%;    
+text-align: center;
+color: white;
+}
+
+.redes_bloque{
+    width: 220px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    }
+.input_form_r{
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+}
+.register_btn{
+    border-radius: 5px;
+}
+.walking{
+  bottom: 5px;
+}
