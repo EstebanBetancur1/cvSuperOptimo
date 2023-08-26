@@ -3,21 +3,26 @@
 @section('content')
 
 <div class="swiper sample-slider">
-    <div class="header_curriculum flex justify-between mb-5">
-        <h1 class="text-3xl">Elije la pantilla de tu preferencia.</h1>
+    <div class="header_curriculum block justify-between mb-5 md:flex">
+        <h1 class="text-2xl mb-2 md:text-3xl md:mb-0">Elije la pantilla de tu preferencia.</h1>
         <nav>
             <ul>
                 <li></li>
                 <li>
                     <form action="">
-                        <select name="" id="">
-                            <option value="1" selected>Tipos de Plantillas</option>
-                            <option value="1">Test</option>
-                            <option value="1">Test</option>
-                            <option value="1">Test</option>
-                            <option value="1">Test</option>
+                        <select name="template" id="templateSelect" class="w-full">
+                            <option value="0" selected disabled>Tipos de Plantillas</option>
+                            <option value="1">Programador</option>
+                            <option value="2">Cocina</option>
+                            <option value="3">Constructor</option>
+                            <option value="4">Bombero</option>
+                            <option value="6">Piloto</option>
+                            <option value="5">Telecomunicaciones</option>
                         </select>
                     </form>
+                    <script>$(document).ready(function() {
+                        $('#templateSelect').select2();
+                      });</script>
                 </li>
             </ul>
         </nav>
