@@ -1,9 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\TemplatesController;
 use App\Http\Controllers\auth;
+use App\Http\Controllers\dashboard;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +26,22 @@ Route::get('/', function () {
 Route::get('/curriculum', [TemplatesController::class, 'curriculum'])->name('curriculum');
 
 Route::get('/register', [auth::class, 'index'])->name('register');
+
+
+Route::get('/google-auth/redirect', function () {
+    return Socialite::driver('google')->redirect();
+});
+ 
+Route::get('/google-auth/callback', function () {
+    $user = Socialite::driver('google')->user();
+ 
+    // $user->token
+});
+
+
+
+
+Route::get('/dashboard', [dashboard::class, 'index'])->name('Dashboard');
 
 
 
