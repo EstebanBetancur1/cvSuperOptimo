@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\TemplatesController;
 use App\Http\Controllers\auth;
 
@@ -20,7 +20,9 @@ Route::get('/', function () {
     return view('pages.index', ['PageName' => 'Inicio']);
 });
 
-
 Route::get('/curriculum', [TemplatesController::class, 'curriculum'])->name('curriculum');
 
 Route::get('/register', [auth::class, 'index'])->name('register');
+
+
+
