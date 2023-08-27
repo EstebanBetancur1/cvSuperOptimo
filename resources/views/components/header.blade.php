@@ -266,7 +266,7 @@
             </span>
             <p class="text-center text-base leading-6 font-medium text-gray-500">
               Ya tienes una cuenta?
-              <a href="#" class="text-gray-900">
+              <a href="{{ route('register') }}" class="text-gray-900">
                 Inicia sesión
               </a>
             </p>

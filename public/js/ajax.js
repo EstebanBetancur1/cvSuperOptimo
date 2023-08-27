@@ -103,3 +103,50 @@ function enviarformulario() {
 }
 
 enviarformulario();
+
+
+
+var contenidoCargado = {};
+
+function cambiarContenido($button, dynamicUrl) {
+    if (contenidoCargado[dynamicUrl]) {
+        // Si el contenido ya se ha cargado, simplemente activa la clase 'active_line'
+        $button.toggleClass('active_line');
+    } else {
+        $.ajax({
+            method: 'GET',
+            url: dynamicUrl,
+            success: function(response) {
+                $('body').html(response); // Reemplaza el contenido completo de la página
+                window.history.pushState({ path: dynamicUrl }, '', dynamicUrl); // Cambia la URL en la barra de direcciones
+
+                // Agrega la clase 'active_line' al botón al hacer clic
+                $button.toggleClass('active_line');
+
+                contenidoCargado[dynamicUrl] = true; // Marca que el contenido se ha cargado
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+                alert('Hubo un error al cargar el contenido.');
+            }
+        });
+    }
+}
+
+function handleTransicion(elementId, dynamicUrl) {
+    $(elementId).on('click', function(e) {
+        e.preventDefault();
+        var $button = $(this);
+        cambiarContenido($button, dynamicUrl);
+    });
+}
+
+handleTransicion('#loginchange', 'https://cv.juanestebanbc.xyz/auth/login');
+handleTransicion('#registerchange', 'https://cv.juanestebanbc.xyz/auth');
+
+
+
+
+function IniciarSesion(){
+    e.p
+}

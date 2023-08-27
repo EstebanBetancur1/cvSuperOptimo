@@ -26,7 +26,9 @@ Route::get('/', function () {
 
 Route::get('/curriculum', [TemplatesController::class, 'curriculum'])->name('curriculum');
 
-Route::get('/register', [auths::class, 'index'])->name('register');
+Route::get('/auth', [auths::class, 'index'])->name('register');
+
+Route::get('/auth/login', [auths::class, 'login'])->name('Inicia');
 
 Route::post('/register_auth', [auths::class, 'register'])->name('register_auth');
 

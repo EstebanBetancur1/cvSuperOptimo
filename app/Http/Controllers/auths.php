@@ -38,4 +38,9 @@ class auths extends Controller
         return redirect()->to('/dashboard');
 
     }
+
+    public function login()
+    {
+        return view('auth.login.index', ['PageName' => 'Inicia']);
+    }
 }

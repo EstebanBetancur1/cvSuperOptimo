@@ -90,18 +90,9 @@
     width: 535px;
     z-index: 1;
     cursor: pointer;
+
 }
-.ul_line:before,
-.active:after {
-    content: "";
-    width: 89%;
-    border: 2px solid rgb(216, 95, 14);
-    position: absolute;
-    top: 31px;
-    margin-top: -2px;
-    z-index: -1;
-    margin-left: 30px;
-}
+
 .active_line:after {
     border-color: rgb(255, 60, 0);
 }
@@ -111,19 +102,37 @@
     width: 100%;
 }
 .li_line {
-    width: 8em;
-    height: 33px;
-    text-align: center;
-    line-height: 2em;
-    border-radius: 4px 4px 4px 0px;
-    background: rgb(255, 60, 0);
-    margin: 0 1em;
-    display: inline-block;
-    color: white;
-}
-.active_line ~ .li_line {
-    border: 1px solid #333;
-    background: white;
+    background: #ffffff;
+    border-radius: 4px 4px 4px 0;
     color: black;
-    z-index: 1;
+    display: inline-block;
+    height: 33px;
+    line-height: 2em;
+    margin: 0 1em;
+    text-align: center;
+    width: 8em;
+    border: 1px solid;
+}
+.active_line {
+    background: rgb(255, 60, 0);
+    border-radius: 4px 4px 4px 0;
+    color: white;
+    display: inline-block;
+    height: 33px;
+    line-height: 2em;
+    margin: 0 1em;
+    text-align: center;
+    width: 8em;
+}
+
+
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(100px); /* Inicialmente, oculta fuera del lado derecho */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in-right.active {
+    opacity: 1;
+    transform: translateX(0);
 }
