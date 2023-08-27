@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="content_redes w-11/12 m-auto">
+    <div class="youhaveaccount w-11/12 m-auto text-center flex justify-center gap-3">
+        <ul class="ul_line">
+            <li class="li_line active_line">1</li>
+            <li class="li_line">2</li>
+          </ul>  
+    </div>
     <div class="titulo_redes mb-12 mt-8">
         <h1 class="text-3xl text-center font-bold text-naranja">Registrate disfruta los beneficios</h1>
     </div>
@@ -28,40 +34,41 @@
         </div>
     </div>
     <div class="form w-11/12 m-auto flex justify-center">
-        <form action="">
+        <form action="" class="w-[537px]">
+            @csrf
             <div class="contenedor_form grid grid-cols-2 row-span-2 gap-4">
                 <div class="name">
                     <label for="name" class="block">Nombre Completo</label>
-                    <input type="text" name="name" placeholder="Nombre Completo" class="input_form_r">
+                    <input type="text" name="name" placeholder="Nombre Completo" class="input_form_r w-full"  id="txtName">
                 </div>
                 <div class="email">
                     <label for="email" class="block">Correo Electroncio</label>
-                    <input type="email" name="email" placeholder="Correo Electronico" class="input_form_r">
+                    <input type="email" name="email" placeholder="Correo Electronico" class="input_form_r w-full"  id="txtEmail">
                 </div>
                 <div class="password">
                     <label for="password" class="block">Contraseña</label>
-                    <input type="password" name="password" placeholder="Contraseña" class="input_form_r">
+                    <input type="password" name="password" placeholder="Contraseña" class="input_form_r w-full" id="txtPassword">
                 </div>
                 <div class="password_confirmation">
-                    <label for="password_confirmation" class="block">Confirma tu contraseña</label>
-                    <input type="password_confirmation" name="password_confirmation" placeholder="Repite tu Contraseña" class="input_form_r">
+                    <label for="password_confirmation" class="block">Confirma contraseña</label>
+                    <input type="password" name="password_confirmation" placeholder="Repite tu Contraseña" class="input_form_r w-full" id="txtPasswordR">
                 </div>
             </div>
-            <a href="/" class="text-naranja text-sm mt-2 block"><span>Olvidaste tu contraseña?</span></a>
+            <a href="/" class="text-naranja text-sm mt-2 inline-block"><span>Olvidaste tu contraseña?</span></a>
             <div class="politicas_de_uso mt-6 mb-1">
                 <input type="checkbox" name="politicas" id="politicas" class="mr-2" required>
-                <label for="politicas" class="text-sm">Acepto los <a href="{{ route('Politicas y condiciones') }}" class="text-naranja">Terminos y Condiciones</a> y <a href="{{ route('Politicas y condiciones') }}" class="text-naranja">Politicas de Privacidad</a></label>
+                <label for="politicas" class="text-sm" id="check">Acepto los <a href="{{ route('Politicas y condiciones') }}" class="text-naranja">Terminos y Condiciones</a> y <a href="{{ route('Politicas y condiciones') }}" class="text-naranja">Politicas de Privacidad</a></label>
             </div>
             <div class="submit_form">
-                <button type="submit" class="bg-naranja w-full mt-2 p-2 text-white register_btn" >Registrarse</button>
+                <button type="submit" class="bg-naranja w-full mt-2 p-2 text-white" id="register_btn">Registrarse</button>
             </div>
         </form>
         <footer>
-            <div class="walking absolute left-0 hidden 2xl:block">
+            <div class="walking absolute left-0 hidden 2xl:block 2xl:w-[35%] w-[100%]">
                 <img src="{{  asset('storage/imagenes/walking.svg') }}" alt="">
             </div>
         </footer>
     </div>
 </div>
-
+<script src="{{ asset('js/ajax.js') }}"></script>
 @endsection

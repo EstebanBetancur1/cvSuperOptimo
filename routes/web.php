@@ -28,6 +28,8 @@ Route::get('/curriculum', [TemplatesController::class, 'curriculum'])->name('cur
 
 Route::get('/register', [auths::class, 'index'])->name('register');
 
+Route::post('/register_auth', [auths::class, 'register'])->name('register_auth');
+
 
 Route::get('/google-auth/redirect', function () {
     return Socialite::driver('Google')->redirect();
