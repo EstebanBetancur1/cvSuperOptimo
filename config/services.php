@@ -36,4 +36,11 @@ return [
         'redirect' => 'https://cv.juanestebanbc.xyz/google-auth/callback',
     ],
 
+    'facebook' => [
+        'client_id' => env('Facebook_CLIENT_ID'),
+        'client_secret' => env('Facebook_CLIENT_SECRET'),
+        'redirect' => 'https://cv.juanestebanbc.xyz/facebook-auth/callback',
+    ],
+
+
 ];

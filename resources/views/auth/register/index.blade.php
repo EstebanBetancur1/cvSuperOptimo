@@ -8,7 +8,7 @@
     <div class="contenedor_fondo_redes  mb-5">     
         <div class="redes_register justify-center flex gap-3">
             <div class="redes_bloque facebok_red flex ">
-                <a href="/">
+                <a href="/facebook-auth/redirect">
                 <div class="antes flex">
                     <svg width="24" height="24" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"><path fill="#3B5998" d="M9.73 6.486v2.478H8v3.03h1.73l.013 8.506h3.552l-.014-8.505h2.384s.223-1.453.331-3.042h-2.701V6.881c0-.31.387-.726.77-.726H16V3h-2.631c-3.728 0-3.64 3.033-3.64 3.486z"></path></svg>
                      <span>Facebook</span>
@@ -31,25 +31,26 @@
         <form action="">
             <div class="contenedor_form grid grid-cols-2 row-span-2 gap-4">
                 <div class="name">
-                    <label for="" class="block">Nombre Completo</label>
+                    <label for="name" class="block">Nombre Completo</label>
                     <input type="text" name="name" placeholder="Nombre Completo" class="input_form_r">
                 </div>
                 <div class="email">
-                    <label for="" class="block">Correo Electroncio</label>
+                    <label for="email" class="block">Correo Electroncio</label>
                     <input type="email" name="email" placeholder="Correo Electronico" class="input_form_r">
                 </div>
                 <div class="password">
-                    <label for="" class="block">Contraseña</label>
+                    <label for="password" class="block">Contraseña</label>
                     <input type="password" name="password" placeholder="Contraseña" class="input_form_r">
                 </div>
                 <div class="password_confirmation">
-                    <label for="" class="block">Confirma tu contraseña</label>
-                    <input type="password" name="password_confirmation" placeholder="Repite tu Contraseña" class="input_form_r">
+                    <label for="password_confirmation" class="block">Confirma tu contraseña</label>
+                    <input type="password_confirmation" name="password_confirmation" placeholder="Repite tu Contraseña" class="input_form_r">
                 </div>
             </div>
+            <a href="/" class="text-naranja text-sm mt-2 block"><span>Olvidaste tu contraseña?</span></a>
             <div class="politicas_de_uso mt-6 mb-1">
                 <input type="checkbox" name="politicas" id="politicas" class="mr-2" required>
-                <label for="politicas" class="text-sm">Acepto los <a href="" class="text-naranja">Terminos y Condiciones</a> y <a href="" class="text-naranja">Politicas de Privacidad</a></label>
+                <label for="politicas" class="text-sm">Acepto los <a href="{{ route('Politicas y condiciones') }}" class="text-naranja">Terminos y Condiciones</a> y <a href="{{ route('Politicas y condiciones') }}" class="text-naranja">Politicas de Privacidad</a></label>
             </div>
             <div class="submit_form">
                 <button type="submit" class="bg-naranja w-full mt-2 p-2 text-white register_btn" >Registrarse</button>

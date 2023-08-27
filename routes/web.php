@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TemplatesController;
-use App\Http\Controllers\auth;
+use App\Http\Controllers\auths;
 use App\Http\Controllers\dashboard;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\terminos;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,23 +26,54 @@ Route::get('/', function () {
 
 Route::get('/curriculum', [TemplatesController::class, 'curriculum'])->name('curriculum');
 
-Route::get('/register', [auth::class, 'index'])->name('register');
+Route::get('/register', [auths::class, 'index'])->name('register');
 
 
 Route::get('/google-auth/redirect', function () {
-    return Socialite::driver('google')->redirect();
+    return Socialite::driver('Google')->redirect();
 });
  
 Route::get('/google-auth/callback', function () {
-    $user = Socialite::driver('google')->user();
- 
-    // $user->token
+    $user = Socialite::driver('Google')->user();
+
+    $user = User::UpdateOrCreate(
+        [
+            'redsocial_id' => $user->id,
+        ], [
+            'name' => $user->name,
+            'email' => $user->email,
+        ]
+    );
+    Auth::login($user, true);
+
+    return redirect()->to('/dashboard');
+
+
+  
 });
 
+Route::get('/facebook-auth/redirect', function () {
+    return Socialite::driver('Facebook')->redirect();
+});
 
+Route::get('/facebook-auth/callback', function () {
+    $user = Socialite::driver('Facebook')->user();
 
+    $user = User::UpdateOrCreate(
+        [
+            'redsocial_id' => $user->id,
+        ], [
+            'name' => $user->name,
+            'email' => $user->email,
+        ]
+    );
+    Auth::login($user, true);
+
+    return redirect()->to('/dashboard');
+});
 
 Route::get('/dashboard', [dashboard::class, 'index'])->name('Dashboard');
 
+Route::get('/politicas', [terminos::class, 'Politicas'])->name('Politicas y condiciones');
 
 
