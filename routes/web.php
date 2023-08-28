@@ -36,6 +36,7 @@ Route::post('/login_auth', [auths::class, 'login_auth'])->name('login_auth');
 
 Route::post('/recover', [auths::class, 'recover'])->name('recover');
 
+Route::get('/Recover/{token}', [auths::class, 'recover_token'])->name('recover_token');
 
 Route::get('/google-auth/redirect', function () {
     return Socialite::driver('Google')->redirect();

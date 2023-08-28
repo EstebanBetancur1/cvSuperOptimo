@@ -84,8 +84,9 @@ class auths extends Controller
                 'token' => $token,
             ]);
     
+            $ultimoToken = RecuperarContrasena::where('status', 0)->latest('created_at')->value('token');
             // Enviar el correo electrónico
-            Mail::send('emails.reset_password', ['token' => $token], function ($message) use ($email) {
+            Mail::send('emails.reset_password', ['token' => $ultimoToken], function ($message) use ($email) {
                 $message->from(config('mail.from.address'), config('mail.from.name'));
                 $message->to($email)->subject('Recuperación de Contraseña');
             });
@@ -95,8 +96,21 @@ class auths extends Controller
             return response()->json(['success' => false, 'message' => 'El correo no existe en nuestra base de datos']);
         }
     }
+
+
+    function recover_token($token){
+        $recover = RecuperarContrasena::where('token', $token)->first();
     
-    
+        if ($recover) {
+            if ($recover->status == 1) {
+                return redirect()->to('/');
+            } else {
+                return view('auth.recover.index', ['PageName' => 'Recuperar Contraseña', 'token' => $token]);
+            }
+        } else {
+            return redirect()->to('/');
+        }
+    }
     
 
 }
