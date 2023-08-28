@@ -103,7 +103,7 @@ class auths extends Controller
     
         if ($recover) {
             if ($recover->status == 1) {
-                return redirect()->to('/');
+                return redirect()->to('/recover/broken');
             } else {
                 return view('auth.recover.index', ['PageName' => 'Recuperar Contraseña', 'token' => $token]);
             }
@@ -111,6 +111,39 @@ class auths extends Controller
             return redirect()->to('/');
         }
     }
+
+    function change_password(Request $request){
+        $request->validate([
+            'password' => 'required|max:255',
+            'token' => 'required|max:255',
+        ]);
+    
+        $recover = RecuperarContrasena::where('token', $request->token)->first();
+    
+        if ($recover) {
+            $user = User::where('id', $recover->user_id)->first();
+    
+            if ($user) {
+                $user->password = Hash::make($request->password);
+                $user->save();
+    
+                $recover->status = 1;
+                $recover->save();
+    
+                return response()->json(['success' => true, 'message' => 'Bienvenido']); 
+    
+            } else {
+                return response()->json(['success' => false, 'message' => 'El usuario no existe']);
+            }
+        } else {
+            return response()->json(['success' => false, 'message' => 'El token no existe']);
+        }
+    }
+
+    function recover_broken(){
+        return view('auth.recover.broken', ['PageName' => 'Recuperar Contraseña']);
+    }
+    
     
 
 }

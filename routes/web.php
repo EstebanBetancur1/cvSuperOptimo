@@ -38,6 +38,10 @@ Route::post('/recover', [auths::class, 'recover'])->name('recover');
 
 Route::get('/Recover/{token}', [auths::class, 'recover_token'])->name('recover_token');
 
+Route::get('/recover/broken', [auths::class, 'recover_broken'])->name('recover_broken');  
+
+Route::post('/change_password', [auths::class, 'change_password'])->name('change_password');
+
 Route::get('/google-auth/redirect', function () {
     return Socialite::driver('Google')->redirect();
 });

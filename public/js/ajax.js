@@ -310,3 +310,66 @@ function RecuperarContrasena() {
 }
 
 RecuperarContrasena();
+
+
+
+function CambiarContrasena() {
+    $('#change_password_s').on('click', function(e) {
+        e.preventDefault();
+
+        var $button = $(this);
+
+        var password = $('#password_r').val();
+        var password_confirmation = $('#password_r_c').val();
+        var token_current = $('#token_current').val();
+
+        // Limpiar errores anteriores
+        $('.error-message').remove();
+        $('.success-message').remove();
+
+        if (password == '') {
+            showerror($('#password_r'), 'La contraseña no puede estar vacía');
+            return false;
+        }
+        else if (password_confirmation == '') {
+            showerror($('#password_r_c'), 'La confirmación de contraseña no puede estar vacía');
+            return false;
+        }
+        else if (password != password_confirmation) {
+            showerror($('#password_r_c'), 'Las contraseñas no coinciden');
+            return false;
+        }
+        else if (password.length < 8) {
+            showerror($('#password_r'), 'La contraseña debe tener al menos 8 caracteres');
+            return false;
+        }
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('[name="_token"]').val()
+            }
+        });
+
+        $.ajax({
+            method: 'POST',
+            url: '/change_password',
+            data: {
+                password: password,
+                token: token_current,
+            },
+            success: function(response) {
+                if (response) {
+                    showSuccess($button, response.message);
+
+                    setTimeout(function() {
+                        window.location.replace('/auth');
+                    }, 300);
+                } else {
+                    showerror($button, response.message);
+                }
+            }
+        });
+    });
+}
+
+CambiarContrasena();
