@@ -136,3 +136,13 @@
     opacity: 1;
     transform: translateX(0);
 }
+
+.modal_login{
+    z-index: 1;
+    position: relative;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin-top: -98px;
+
+}

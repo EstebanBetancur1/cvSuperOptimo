@@ -13,7 +13,7 @@ function showerror(inputElement, errorMessage) {
 
         var errorSpan = $('<span>', {
             text: errorMessage,
-            style: 'color: red;',
+            style: 'color: red; ',
             class: 'error-message'
         });
 
@@ -24,6 +24,56 @@ function showerror(inputElement, errorMessage) {
     $(inputElement).on('focus', function() {
         $(this).css('border', '1px solid #ced4da');
         $(this).parent().find('.error-message').remove();
+    });
+}
+
+function showError(inputElement, errorMessage) {
+    var existingError = $(inputElement).parent().find('.error-message');
+    
+    if (existingError.length > 0) {
+        existingError.text(errorMessage); // Update the existing error message
+    } else {
+        $(inputElement).css('border', '1px solid red');
+
+        var errorSpan = $('<span>', {
+            text: errorMessage,
+            style: 'color: red; position: absolute; left: 0; bottom: 54px; right: 0; text-align: center; ',
+            class: 'error-message'
+        });
+
+        $(inputElement).parent().append(errorSpan);
+    }
+
+    // detectar cuando el usuario toque el input para quitar el error
+    $(inputElement).on('focus', function() {
+        $(this).css('border', '1px solid #ced4da');
+        $(this).parent().find('.error-message').remove();
+    });
+}
+
+function showSuccess(inputElement, successMessage) {
+    var existingSuccess = $(inputElement).parent().find('.success-message');
+
+    if (existingSuccess.length > 0) {
+        existingSuccess.text(successMessage); // Update the existing success message
+    } else {
+        $(inputElement).css('border', '1px solid green');
+
+        var successSpan = $('<span>', {
+            text: successMessage,
+            style: 'color: green; position: absolute; left: 0; bottom: 54px; right: 0; text-align: center;',
+            class: 'success-message'
+        });
+        
+
+        $(inputElement).parent().append(successSpan);
+    }
+
+    // detectar cuando el usuario toque el input para quitar el error
+    $(inputElement).on('focus', function() {
+        $(this).css('border', '1px solid #ced4da');
+        $(this).parent().find('.success-message').remove();
+
     });
 }
 
@@ -105,7 +155,6 @@ function enviarformulario() {
 enviarformulario();
 
 
-
 var contenidoCargado = {};
 
 function cambiarContenido($button, dynamicUrl) {
@@ -146,7 +195,118 @@ handleTransicion('#registerchange', 'https://cv.juanestebanbc.xyz/auth');
 
 
 
+function IniciarSesion() {
+    $('#login_btn').on('click', function(e) {
+        e.preventDefault();
+        var $button = $(this);
 
-function IniciarSesion(){
-    e.p
+        var email = $('#txtEmail').val();
+        var password = $('#txtPassword').val();
+
+        // Limpiar errores anteriores
+        $('.error-message').remove();
+
+        if (email == '') {
+            showerror($('#txtEmail'), 'El correo no puede estar vacío');
+            return false;
+        } else if (!validateEmail(email)) {
+            showerror($('#txtEmail'), 'El correo no es válido');
+            return false;
+        } else if (password == '') {
+            showerror($('#txtPassword'), 'La contraseña no puede estar vacía');
+            return false;
+        }
+
+        $button.addClass('disabled');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('[name="_token"]').val()
+            }
+        });
+
+        $.ajax({
+            method: 'POST',
+            url: '/login_auth',
+            data: {
+                email: email,
+                password: password,
+            },
+            success: function(response) {
+                if (response.success) {
+                    window.location.href = '/dashboard';
+                } else {
+                    // Mostrar errores en la vista
+                    showerror($button, response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                var response = xhr.responseJSON;
+                if (response) {
+                    showerror($button, response.message);
+                } else {
+                    showerror($button, 'Error en la solicitud. Por favor, intenta de nuevo.');
+                }
+            }
+        }).always(function() {
+            $button.removeClass('disabled');
+        });
+    });
 }
+
+IniciarSesion();
+
+
+
+function RecuperarContrasena() {
+    $('#recover_btn').on('click', function(e) {
+        e.preventDefault();
+
+        var $button = $(this);
+        var email = $('#txtEmailRe').val();
+        var csrfToken = $('[name="_token"]').val();
+
+        // Limpiar errores anteriores
+        $('.error-message').remove();
+        $('.success-message').remove();
+
+        if (email == '') {
+            showError($('#txtEmailRe'), 'El correo no puede estar vacío');
+            return false;
+        } else if (!validateEmail(email)) {
+            showError($('#txtEmailRe'), 'El correo no es válido');
+            return false;
+        }
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            }
+        });
+
+        $.ajax({
+            method: 'POST',
+            url: '/recover',
+            data: {
+                email: email,
+                csrfToken: csrfToken,
+            },
+            success: function(response) {
+                if (response.success) {
+                    showSuccess($button, response.message);
+                } else {
+                    showError($button, response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                var response = xhr.responseJSON;
+                if (response) {
+                    showSuccess($button, response.message);
+                } else {
+                    showError($button, 'Error en la solicitud. Por favor, intenta de nuevo.');
+                }
+            }
+        });
+    });
+}
+
+RecuperarContrasena();

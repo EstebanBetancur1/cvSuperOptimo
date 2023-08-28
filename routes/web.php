@@ -32,6 +32,10 @@ Route::get('/auth/login', [auths::class, 'login'])->name('Inicia');
 
 Route::post('/register_auth', [auths::class, 'register'])->name('register_auth');
 
+Route::post('/login_auth', [auths::class, 'login_auth'])->name('login_auth');
+
+Route::post('/recover', [auths::class, 'recover'])->name('recover');
+
 
 Route::get('/google-auth/redirect', function () {
     return Socialite::driver('Google')->redirect();
