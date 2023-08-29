@@ -42,6 +42,8 @@ Route::get('/recover/broken', [auths::class, 'recover_broken'])->name('recover_b
 
 Route::post('/change_password', [auths::class, 'change_password'])->name('change_password');
 
+Route::get('/logout', [auths::class, 'logout'])->name('logout');
+
 Route::get('/google-auth/redirect', function () {
     return Socialite::driver('Google')->redirect();
 });
@@ -60,9 +62,6 @@ Route::get('/google-auth/callback', function () {
     Auth::login($user, true);
 
     return redirect()->to('/dashboard');
-
-
-  
 });
 
 Route::get('/facebook-auth/redirect', function () {
@@ -85,7 +84,7 @@ Route::get('/facebook-auth/callback', function () {
     return redirect()->to('/dashboard');
 });
 
-Route::get('/dashboard', [dashboard::class, 'index'])->name('Dashboard');
+Route::get('/dashboard', [dashboard::class, 'index'])->name('dashboard');
 
 Route::get('/politicas', [terminos::class, 'Politicas'])->name('Politicas y condiciones');
 

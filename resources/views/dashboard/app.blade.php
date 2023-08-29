@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/swiper.css') }}">
     <link rel="stylesheet" href="{{ asset('css/select2.css') }}">
-  
 </head>
     <body>
+       @include('dashboard.header.header')
        @yield('content')
     </body>
 </html>

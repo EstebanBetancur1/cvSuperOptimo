@@ -144,6 +144,10 @@ class auths extends Controller
         return view('auth.recover.broken', ['PageName' => 'Recuperar Contraseña']);
     }
     
-    
+
+    function logout(){
+        Auth::logout();
+        return redirect()->to('/');
+    }
 
 }
