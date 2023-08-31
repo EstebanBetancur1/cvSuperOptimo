@@ -1,7 +1,7 @@
 <style>
     .contenedor-logo_dashboard img{
-        width: 200px;
-        height: 50px;
+        width: 170px;
+        height: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -16,8 +16,8 @@
     }
 
     .btn-menu img{
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
         background-color: transparent;
         border: none;
         outline: none;
@@ -39,7 +39,7 @@
 
 
 <header class="w-full shadow-sm h-20">
-    <nav class="w-11/12 m-auto p-2 ">
+    <nav class="w-[95.666667%] m-auto p-2 ">
         <div class="flex justify-between items-center">
             <div class="contenedor-logo_dashboard">
                 <a href="{{ route('dashboard') }}">
@@ -50,7 +50,7 @@
                 <button class="btn-menu">
                     <img class="shrink-0" src="{{ asset('storage/imagenes/sesion.svg') }}" alt="">
                 </button>
-                <ul class="menu bg-white shadow rounded p-4">
+                <ul class="menu bg-white shadow rounded p-4 z-10">
                     <li class="menu-item">
                         <a href="{{ route('dashboard') }}" class="menu-link">Inicio</a>
                     </li>
