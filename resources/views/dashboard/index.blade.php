@@ -1,7 +1,7 @@
 @extends('dashboard.app')
 
 @section('content')
-<style>
+{{-- <style>
     .contenedor_views{
         border-bottom: 1px solid #c9c9c9;
     }
@@ -100,177 +100,63 @@
         width: 192px;
         height: 32px;
     }
-</style>
-    <div class="contenedor_cajas_hoja w-10/12 2xl:w-8/12 m-auto relative">
-        <div class="dashboard_titulo mt-16">
-            <h2 class="sm:text-3xl font-bold">Hojas de vida y cartas de presentación </h2>
-        </div>
-        <div class="contenedor_views flex gap-5 mt-2">
-            <div class="cv utilidad_select">
-                <h3 class="text-base sm:text-2xl">Hojas de vida</h3>
+</style> --}}
+<div class="container mx-auto px-4 py-8 ">
+    <div class="flex space-x-8 ">
+        <!-- Resume Card -->
+        <div class="bg-white rounded-lg shadow p-6 w-1/3 hover:border hover:border-solid-black">
+            <div class="border-b pb-4">
+                <h2 class="text-lg font-semibold">Untitled</h2>
+                <p class="text-sm text-gray-500">Updated 29 August, 10:10</p>
             </div>
-            <div class="presentacion utilidad_select active">
-                <h3 class="text-base sm:text-2xl">Carta de presentación</h3>
-            </div>
-            <div class="selector absolute right-0 inline-flex items-center justify-center px-2 py-1 text-base font-medium leading-6 text-white whitespace-no-wrap bg-blue-600 border border-blue-700 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                <button style="">&#10011; Crear Nuevo</button>
-            </div>
-        </div>
-        <div class="vistas_hojas mt-10 ">
-            <div class="contenedor_start grid sm:grid-cols-3 grid-cols-2 gap-3">
-
-                <div class="caja_cv flex gap-2 sm:mb-0 mb-5 cursor-pointer" id="create_new">
-                    <div class="caja_preview border-[2px] rounded">
-                        <span class="w-full grid place-content-center">
-                            <div class="w-[50px] h-[50px] rounded-full bg-naranja opacity-50 flex justify-center items-center text-center m-auto p-[3%] cursor-pointer">
-                                <h2 class="text-5xl mt-[-10px] text-white">+</h2>
-                              </div>
-                        </span>
-                    </div>
-                    <div class="caja_info">
-                        <div class="titulo_info flex flex-col leading-5 mb-5">
-                            <span class="text-gray-500 text-xl">Nuevo</span>
-                            <span class="text-gray-500 text-base w-[164px] lg:w-[305px]">Crea un currículum personalizado para cada trabajo
-                                solicitud. Duplica tus posibilidades de
-                                siendo contratado!</span>
-                        </div>
-                    </div>
+            <div class="pt-4 grid grid-cols-2">
+                <div>
+                    <img src="{{ asset('storage/imagenes/curriculum.webp') }}" alt="">
                 </div>
-
-                <div class="caja_cv flex gap-2 sm:mb-0 mb-5">
-                    <div class="caja_preview border-[2px] rounded">
-                        <img src="{{ asset('storage/imagenes/curriculum.webp') }}" alt="">
+                <ul class="mt-4 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm font-semibold text-blue-600 bg-blue-100 rounded-full px-3 py-1">35% Resume score</span>
+                        <span class="text-xs text-gray-500">Nuevo</span>
                     </div>
-                    <div class="caja_info">
-                        <div class="titulo_info flex flex-col leading-5 mb-5">
-                            <span class="font-bold text-lg">Plantilla 1</span>
-                            <span class="text-gray-400 text-base">Actualizado <?php echo date('d F')?></span>
-                        </div>
-                        <div class="icons_select sm:leading-[50px] leading-9">
-                            <ul>
-                                <li class="flex hover_icons cursor-pointer">
-                                    <img class="icon_smg" src="{{ asset('storage/imagenes/icons/editar.svg') }}" alt="">
-                                    <a href="" class="hover_icons">Editar</a>
-                                </li>
-                                <li class="flex hover_icons  cursor-pointer">
-                                    <img class="icon_smg" src="{{ asset('storage/imagenes/icons/descargar.svg') }}" alt="">
-                                    <a  href="">Descargar PDF</a>
-                                </li>    
-                                <li class="flex hover_icons  cursor-pointer">
-                                    <img class="icon_smg" src="{{ asset('storage/imagenes/icons/docx.svg') }}" alt="">
-                                    <a href="" >Exportar a DOCX</a>
-                                </li>
-                                <li class="flex hover_icons  cursor-pointer">
-                                    <img class="icon_smg" src="{{ asset('storage/imagenes/icons/email.svg') }}" alt="">
-                                    <a href="">Enviar correo</a>
-                                </li>
-                            </ul>
-                            <div class="content_mas">
-                                <div class="flex cursor-pointer hover_icons" id="vermas"> 
-                                    <img class="icon_smg" src="{{ asset('storage/imagenes/icons/puntos.svg') }}" alt="">
-                                    <span>Más</span>
-                                </div>
-                                <ul class="hidden mas bg-white shadow rounded p-4">
-                                    <li class="flex hover_icons  cursor-pointer">
-                                        <img class="icon_smg" src="{{ asset('storage/imagenes/icons/trash.svg') }}" alt="">
-                                        <a href="">Borrar</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="caja_cv flex gap-2 sm:mb-0 mb-5">
-                    <div class="caja_preview border-[2px] rounded">
-                        <img src="{{ asset('storage/imagenes/curriculum.webp') }}" alt="">
-                    </div>
-                    <div class="caja_info">
-                        <div class="titulo_info flex flex-col leading-5 mb-5">
-                            <span class="font-bold text-lg">Plantilla 1</span>
-                            <span class="text-gray-400 text-base">Actualizado <?php echo date('d F')?></span>
-                        </div>
-                        <div class="icons_select sm:leading-[50px] leading-9">
-                            <ul>
-                                <li class="flex hover_icons cursor-pointer">
-                                    <img class="icon_smg" src="{{ asset('storage/imagenes/icons/editar.svg') }}" alt="">
-                                    <a href="" class="hover_icons">Editar</a>
-                                </li>
-                                <li class="flex hover_icons  cursor-pointer">
-                                    <img class="icon_smg" src="{{ asset('storage/imagenes/icons/descargar.svg') }}" alt="">
-                                    <a  href="">Descargar PDF</a>
-                                </li>    
-                                <li class="flex hover_icons  cursor-pointer">
-                                    <img class="icon_smg" src="{{ asset('storage/imagenes/icons/docx.svg') }}" alt="">
-                                    <a href="" >Exportar a DOCX</a>
-                                </li>
-                                <li class="flex hover_icons  cursor-pointer">
-                                    <img class="icon_smg" src="{{ asset('storage/imagenes/icons/email.svg') }}" alt="">
-                                    <a href="">Enviar correo</a>
-                                </li>
-                            </ul>
-                            <div class="content_mas">
-                                <div class="flex cursor-pointer hover_icons" id="vermas"> 
-                                    <img class="icon_smg" src="{{ asset('storage/imagenes/icons/puntos.svg') }}" alt="">
-                                    <span>Más</span>
-                                </div>
-                                <ul class="hidden mas bg-white shadow rounded p-4">
-                                    <li class="flex hover_icons  cursor-pointer">
-                                        <img class="icon_smg" src="{{ asset('storage/imagenes/icons/trash.svg') }}" alt="">
-                                        <a href="">Borrar</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="caja_cv flex gap-2 sm:mb-0 mb-5">
-                    <div class="caja_preview border-[2px] rounded">
-                        <img src="{{ asset('storage/imagenes/curriculum.webp') }}" alt="">
-                    </div>
-                    <div class="caja_info">
-                        <div class="titulo_info flex flex-col leading-5 mb-5">
-                            <span class="font-bold text-lg">Plantilla 1</span>
-                            <span class="text-gray-400 text-base">Actualizado <?php echo date('d F')?></span>
-                        </div>
-                        <div class="icons_select sm:leading-[50px] leading-9">
-                            <ul>
-                                <li class="flex hover_icons cursor-pointer">
-                                    <img class="icon_smg" src="{{ asset('storage/imagenes/icons/editar.svg') }}" alt="">
-                                    <a href="" class="hover_icons">Editar</a>
-                                </li>
-                                <li class="flex hover_icons  cursor-pointer">
-                                    <img class="icon_smg" src="{{ asset('storage/imagenes/icons/descargar.svg') }}" alt="">
-                                    <a  href="">Descargar PDF</a>
-                                </li>    
-                                <li class="flex hover_icons  cursor-pointer">
-                                    <img class="icon_smg" src="{{ asset('storage/imagenes/icons/docx.svg') }}" alt="">
-                                    <a href="" >Exportar a DOCX</a>
-                                </li>
-                                <li class="flex hover_icons  cursor-pointer">
-                                    <img class="icon_smg" src="{{ asset('storage/imagenes/icons/email.svg') }}" alt="">
-                                    <a href="">Enviar correo</a>
-                                </li>
-                            </ul>
-                            <div class="content_mas">
-                                <div class="flex cursor-pointer hover_icons" id="vermas"> 
-                                    <img class="icon_smg" src="{{ asset('storage/imagenes/icons/puntos.svg') }}" alt="">
-                                    <span>Más</span>
-                                </div>
-                                <ul class="hidden mas bg-white shadow rounded p-4">
-                                    <li class="flex hover_icons  cursor-pointer">
-                                        <img class="icon_smg" src="{{ asset('storage/imagenes/icons/trash.svg') }}" alt="">
-                                        <a href="">Borrar</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            
-
+                    <li class="flex items-center hover:bg-gray-100 cursor-pointer">
+                        <i class="fas fa-edit text-orange-500 mr-2 hover:text-orange-200"></i>
+                        <span>Editar</span>
+                    </li>
+                    <li class="flex items-center hover:bg-gray-100 cursor-pointer">
+                        <i class="fas fa-envelope text-orange-500 hover:text-orange-200 mr-2"></i>
+                        <span>Enviar correo</span>
+                    </li>
+                    <li class="flex items-center hover:bg-gray-100 cursor-pointer">
+                        <i class="fas fa-file-pdf text-orange-500 hover:text-orange-200 mr-2"></i>
+                        <span>Descargar PDF</span>
+                    </li>
+                    <li class="flex items-center  hover:bg-gray-100 cursor-pointer">
+                        <i class="fas fa-file-word text-orange-500 hover:text-orange-200 mr-2"></i>
+                        Descargar en DOCX
+                    </li>
+                    <li class="flex items-center hover:bg-gray-100 cursor-pointer">
+                        <i class="fas fa-trash-alt text-orange-500 hover:text-orange-200 mr-2"></i>
+                        Eliminar
+                    </li>
+                </ul>
             </div>
         </div>
+
+        <!-- Add New Resume Card -->
+        
+     
+        <a href="{{ route('resume.create') }}" class="bg-white rounded-lg shadow p-6 w-1/3 flex flex-col items-center cursor-pointer justify-center hover:border hover:border-solid-black">
+            <div class="rounded-full bg-gray-200 p-4 h-10 w-10 justify-center items-center flex">
+                <i class="fas fa-plus text-gray-400 text-2xl"></i>
+            </div>
+            <div class="text-center mt-4">
+                <h3 class="text-lg font-semibold">Crear nuevo</h3>
+                <p class="text-sm text-gray-500 mt-2">Cree un currículum personalizado para cada solicitud de empleo. ¡Duplica tus posibilidades de ser contratado!</p>
+            </div>
+        </a>
+    
     </div>
+</div>
 
 
 

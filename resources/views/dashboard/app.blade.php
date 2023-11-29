@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/swiper.css') }}">
     <link rel="stylesheet" href="{{ asset('css/select2.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+
 </head>
     <body>
        @include('dashboard.header.header')

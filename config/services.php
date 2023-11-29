@@ -33,7 +33,7 @@ return [
     'google' => [
         'client_id' => env('Google_CLIENT_ID'),
         'client_secret' => env('Google_CLIENT_SECRET'),
-        'redirect' => 'https://cv.juanestebanbc.xyz/google-auth/callback',
+        'redirect' => 'https://superoptimo.com/google-auth/callback',
     ],
 
     'facebook' => [

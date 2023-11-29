@@ -66,7 +66,7 @@ class auths extends Controller
 
     function recover(Request $request){
         $request->validate([
-            'email' => 'required|max:255|email', // Agregado 'email' para validar el formato del correo
+            'email' => 'required|max:255|email', // Validar formato del correo
         ]);
     
         $email = $request->input('email');
@@ -74,19 +74,23 @@ class auths extends Controller
         $user = User::where('email', $email)->first();
     
         if ($user) {
-            $userId = $user->id; // Obtener el ID del usuario
+            $userId = $user->id; 
+    
+            $tokenActivo = RecuperarContrasena::where('user_id', $userId)->where('status', 0)->first();
+
+            if ($tokenActivo) {
+                return response()->json(['success' => false, 'message' => 'Actualmente tienes un token activo, revisa tu correo']);
+            }
+    
             $token = Str::random(64);
     
-            // Guardar información en la tabla recuperarcontrasena
             RecuperarContrasena::create([
-                'user_id' => $userId, // Asociar el ID del usuario
+                'user_id' => $userId, 
                 'email' => $email,
                 'token' => $token,
             ]);
     
-            $ultimoToken = RecuperarContrasena::where('status', 0)->latest('created_at')->value('token');
-            // Enviar el correo electrónico
-            Mail::send('emails.reset_password', ['token' => $ultimoToken], function ($message) use ($email) {
+            Mail::send('emails.reset_password', ['token' => $token], function ($message) use ($email) {
                 $message->from(config('mail.from.address'), config('mail.from.name'));
                 $message->to($email)->subject('Recuperación de Contraseña');
             });
@@ -96,6 +100,7 @@ class auths extends Controller
             return response()->json(['success' => false, 'message' => 'El correo no existe en nuestra base de datos']);
         }
     }
+    
 
 
     function recover_token($token){

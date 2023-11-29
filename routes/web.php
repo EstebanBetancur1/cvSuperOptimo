@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TemplatesController;
 use App\Http\Controllers\auths;
 use App\Http\Controllers\dashboard;
+use App\Http\Controllers\curriculum;
 use App\Models\User;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
@@ -49,16 +50,17 @@ Route::get('/google-auth/redirect', function () {
 });
  
 Route::get('/google-auth/callback', function () {
-    $user = Socialite::driver('Google')->user();
+    $googleUser = Socialite::driver('Google')->user();
 
     $user = User::UpdateOrCreate(
         [
-            'redsocial_id' => $user->id,
+            'email' => $googleUser->email, 
         ], [
-            'name' => $user->name,
-            'email' => $user->email,
+            'redsocial_id' => $googleUser->id, 
+            'updated_at' => now(),
         ]
     );
+
     Auth::login($user, true);
 
     return redirect()->to('/dashboard');
@@ -88,4 +90,6 @@ Route::get('/dashboard', [dashboard::class, 'index'])->name('dashboard');
 
 Route::get('/politicas', [terminos::class, 'Politicas'])->name('Politicas y condiciones');
 
+/* curriculum */
 
+Route::get('/curriculum', [curriculum::class, 'index'])->name('resume.create');

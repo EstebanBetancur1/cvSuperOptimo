@@ -24,7 +24,7 @@
                     </tr>
                     <tr>
                         <td style="text-align:center;">
-                          <a href="https://cv.juanestebanbc.xyz/" title="logo" target="_blank">
+                          <a href="{{ config('app.url') }}" title="logo" target="_blank">
                             <img width="60" src="https://i.ibb.co/zGFGZJ6/logo.png" title="logo" alt="logo" style="    height: 162px; width: 312px; margin-bottom: -53px;">
                           </a>
                         </td>
@@ -62,7 +62,9 @@
                     </tr>
                     <tr>
                         <td style="text-align:center;">
-                            <p style="font-size:14px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;">&copy; <strong>https://cv.juanestebanbc.xyz/</strong></p>
+                            <a href="{{ config('app.url') }}" title="logo" target="_blank">
+                            <p style="font-size:14px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;">&copy; <strong>{{ config('app.name', 'Super Optimo') }}</strong></p>
+                            </a>
                         </td>
                     </tr>
                     <tr>

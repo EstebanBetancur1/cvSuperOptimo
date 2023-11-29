@@ -190,8 +190,11 @@ function handleTransicion(elementId, dynamicUrl) {
     });
 }
 
-handleTransicion('#loginchange', 'https://cv.juanestebanbc.xyz/auth/login');
-handleTransicion('#registerchange', 'https://cv.juanestebanbc.xyz/auth');
+
+urlsite = window.location.origin;
+
+handleTransicion('#loginchange', urlsite + '/auth/login');
+handleTransicion('#registerchange', urlsite + '/auth');
 
 
 
@@ -203,7 +206,6 @@ function IniciarSesion() {
         var email = $('#txtEmail').val();
         var password = $('#txtPassword').val();
 
-        // Limpiar errores anteriores
         $('.error-message').remove();
 
         if (email == '') {
@@ -254,7 +256,6 @@ function IniciarSesion() {
 }
 
 IniciarSesion();
-
 
 
 function RecuperarContrasena() {

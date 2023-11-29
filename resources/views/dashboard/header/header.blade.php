@@ -43,7 +43,7 @@
         <div class="flex justify-between items-center">
             <div class="contenedor-logo_dashboard">
                 <a href="{{ route('dashboard') }}">
-                    <img class="logo_dashboard" src="{{ asset('storage/imagenes/logo.png') }}" alt="">
+                    <img src="{{ asset('storage/imagenes/logo_ico.svg') }}" alt="">
                 </a>
             </div>
             <div class="contenedor-btn_menu">
